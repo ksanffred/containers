@@ -1,5 +1,5 @@
 #include "tests_entry.h"
-using namespace s21;
+using namespace my;
 
 TEST(node, DefaultConstructor) {
   Node<int> node;

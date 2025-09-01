@@ -1,6 +1,6 @@
 #include "tests_entry.h"
 #define DEFAULT_QUEUE {1, 2, 3}
-using namespace s21;
+using namespace my;
 
 TEST(queue, DefaultConstructor) {
   queue<int> queue_;

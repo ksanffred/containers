@@ -1,7 +1,7 @@
 #include "tests_entry.h"
 #define DEFAULT_VECTOR {1, 2, 3}
 #define DEFAULT_SIZE 3
-using namespace s21;
+using namespace my;
 
 TEST(VectorIterator, DefaultConstructor) {
   vector<int>::VectorIterator it;

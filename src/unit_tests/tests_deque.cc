@@ -1,6 +1,6 @@
 #include "tests_entry.h"
 #define DEFAULT_DEQUE {1, 2, 3}
-using namespace s21;
+using namespace my;
 
 TEST(deque, DefaultConstructor) {
   deque<int> deque_;

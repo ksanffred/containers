@@ -3,7 +3,7 @@
 
 #include <gtest/gtest.h>
 
-#include "../s21_containers/s21_containers.h"
-#include "../s21_containersplus/s21_containersplus.h"
+#include "../my_containers/my_containers.h"
+#include "../my_containersplus/my_containersplus.h"
 
 #endif

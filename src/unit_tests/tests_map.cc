@@ -3,12 +3,12 @@
 #include "tests_entry.h"
 
 TEST(Map, Constructors_default) {
-  s21::map<int, std::string> first;
+  my::map<int, std::string> first;
   EXPECT_TRUE(first.begin() == first.end());
-  EXPECT_EQ(first.size(), (s21::map<int, std::string>::size_type)0);
+  EXPECT_EQ(first.size(), (my::map<int, std::string>::size_type)0);
 }
 TEST(Map, Constructors_initializer_list_int) {
-  s21::map<int, std::string> first{{2, "school"},   {5, "twenty"}, {21, "one"},
+  my::map<int, std::string> first{{2, "school"},   {5, "twenty"}, {21, "one"},
                                    {14, "alpacas"}, {5, "let's"},  {0, "GO"}};
   std::map<int, std::string> result{{2, "school"},   {5, "twenty"}, {21, "one"},
                                     {14, "alpacas"}, {5, "let's"},  {0, "GO"}};
@@ -20,7 +20,7 @@ TEST(Map, Constructors_initializer_list_int) {
   }
 }
 TEST(Map, Constructors_initializer_list_string) {
-  s21::map<std::string, int> first{{"school", 2},   {"twenty", 5}, {"one", 21},
+  my::map<std::string, int> first{{"school", 2},   {"twenty", 5}, {"one", 21},
                                    {"alpacas", 14}, {"let's", 5},  {"GO", 0}};
   std::map<std::string, int> result{{"school", 2},   {"twenty", 5}, {"one", 21},
                                     {"alpacas", 14}, {"let's", 5},  {"GO", 0}};
@@ -32,9 +32,9 @@ TEST(Map, Constructors_initializer_list_string) {
   }
 }
 TEST(Map, Constructors_copy) {
-  s21::map<int, std::string> first{{2, "school"},   {5, "twenty"}, {21, "one"},
+  my::map<int, std::string> first{{2, "school"},   {5, "twenty"}, {21, "one"},
                                    {14, "alpacas"}, {5, "let's"},  {0, "GO"}};
-  s21::map<int, std::string> second{first};
+  my::map<int, std::string> second{first};
   std::map<int, std::string> result{{2, "school"},   {5, "twenty"}, {21, "one"},
                                     {14, "alpacas"}, {5, "let's"},  {0, "GO"}};
   auto iter_f = first.begin(), eiter_f = first.end();
@@ -51,9 +51,9 @@ TEST(Map, Constructors_copy) {
   EXPECT_EQ(result.size(), second.size());
 }
 TEST(Map, Constructors_move) {
-  s21::map<int, std::string> first{{2, "school"},   {5, "twenty"}, {21, "one"},
+  my::map<int, std::string> first{{2, "school"},   {5, "twenty"}, {21, "one"},
                                    {14, "alpacas"}, {5, "let's"},  {0, "GO"}};
-  s21::map<int, std::string> second{std::move(first)};
+  my::map<int, std::string> second{std::move(first)};
   std::map<int, std::string> result{{2, "school"},   {5, "twenty"}, {21, "one"},
                                     {14, "alpacas"}, {5, "let's"},  {0, "GO"}};
   auto iter_s = second.begin(), eiter_s = second.end();
@@ -66,9 +66,9 @@ TEST(Map, Constructors_move) {
   EXPECT_EQ(result.size(), second.size());
 }
 TEST(Map, Assignment_copy) {
-  s21::map<int, std::string> first{{2, "school"},   {5, "twenty"}, {21, "one"},
+  my::map<int, std::string> first{{2, "school"},   {5, "twenty"}, {21, "one"},
                                    {14, "alpacas"}, {5, "let's"},  {0, "GO"}};
-  s21::map<int, std::string> second = first;
+  my::map<int, std::string> second = first;
   std::map<int, std::string> result{{2, "school"},   {5, "twenty"}, {21, "one"},
                                     {14, "alpacas"}, {5, "let's"},  {0, "GO"}};
   auto iter_f = first.begin(), eiter_f = first.end();
@@ -85,9 +85,9 @@ TEST(Map, Assignment_copy) {
   EXPECT_EQ(result.size(), second.size());
 }
 TEST(Map, Assignment_move) {
-  s21::map<int, std::string> first{{2, "school"},   {5, "twenty"}, {21, "one"},
+  my::map<int, std::string> first{{2, "school"},   {5, "twenty"}, {21, "one"},
                                    {14, "alpacas"}, {5, "let's"},  {0, "GO"}};
-  s21::map<int, std::string> second = std::move(first);
+  my::map<int, std::string> second = std::move(first);
   std::map<int, std::string> result{{2, "school"},   {5, "twenty"}, {21, "one"},
                                     {14, "alpacas"}, {5, "let's"},  {0, "GO"}};
   auto iter_s = second.begin(), eiter_s = second.end();
@@ -100,7 +100,7 @@ TEST(Map, Assignment_move) {
   EXPECT_EQ(result.size(), second.size());
 }
 TEST(Map, Iterator_begin) {
-  s21::map<int, std::string> first{{2, "school"},   {5, "twenty"}, {21, "one"},
+  my::map<int, std::string> first{{2, "school"},   {5, "twenty"}, {21, "one"},
                                    {14, "alpacas"}, {5, "let's"},  {0, "GO"}};
   std::map<int, std::string> result{{2, "school"},   {5, "twenty"}, {21, "one"},
                                     {14, "alpacas"}, {5, "let's"},  {0, "GO"}};
@@ -110,17 +110,17 @@ TEST(Map, Iterator_begin) {
   EXPECT_EQ(iter_s->second, iter_r->second);
 }
 TEST(Map, Iterator_end) {
-  s21::map<int, std::string> first{{2, "school"}};
+  my::map<int, std::string> first{{2, "school"}};
   auto iter_s = first.begin();
   EXPECT_TRUE(++iter_s == first.end());
 }
 TEST(Map, At) {
-  s21::map<int, std::string> first{{2, "school"},   {5, "twenty"}, {21, "one"},
+  my::map<int, std::string> first{{2, "school"},   {5, "twenty"}, {21, "one"},
                                    {14, "alpacas"}, {5, "let's"},  {0, "GO"}};
   EXPECT_EQ("school", first.at(2));
 }
 TEST(Map, Operator_square) {
-  s21::map<int, std::string> first{{2, "school"},   {5, "twenty"}, {21, "one"},
+  my::map<int, std::string> first{{2, "school"},   {5, "twenty"}, {21, "one"},
                                    {14, "alpacas"}, {5, "let's"},  {0, "GO"}};
   EXPECT_EQ(first[14], "");
   EXPECT_EQ(first.at(2), "school");
@@ -130,14 +130,14 @@ TEST(Map, Operator_square) {
   EXPECT_EQ(first.at(23), "WRONG");
 }
 TEST(Map, Size) {
-  s21::map<int, std::string> first{{2, "school"},   {5, "twenty"}, {21, "one"},
+  my::map<int, std::string> first{{2, "school"},   {5, "twenty"}, {21, "one"},
                                    {21, "alpacas"}, {5, "let's"},  {0, "GO"}};
   std::map<int, std::string> result{{2, "school"},   {5, "twenty"}, {21, "one"},
                                     {21, "alpacas"}, {5, "let's"},  {0, "GO"}};
   EXPECT_EQ(first.size(), result.size());
 }
 TEST(Map, Empty) {
-  s21::map<int, std::string> first;
+  my::map<int, std::string> first;
   std::map<int, std::string> result;
   EXPECT_EQ(first.empty(), result.empty());
   first.insert({2, "school"});
@@ -145,7 +145,7 @@ TEST(Map, Empty) {
   EXPECT_EQ(first.empty(), result.empty());
 }
 TEST(Map, Max_size) {
-  s21::map<int, std::string> first{{5, "twenty"}, {21, "one"}};
+  my::map<int, std::string> first{{5, "twenty"}, {21, "one"}};
   auto before = first.max_size();
   first.insert({2, "school"});
   for (int i{0}; i != 100; ++i) first.insert({i, "loop"});
@@ -154,82 +154,82 @@ TEST(Map, Max_size) {
   EXPECT_TRUE(before > first.size());
 }
 TEST(Map, Clear) {
-  s21::map<int, std::string> first{{2, "school"},   {5, "twenty"}, {21, "one"},
+  my::map<int, std::string> first{{2, "school"},   {5, "twenty"}, {21, "one"},
                                    {14, "alpacas"}, {5, "let's"},  {0, "GO"}};
   EXPECT_EQ(first.at(2), "school");
-  EXPECT_EQ(first.size(), (s21::map<int, std::string>::size_type)5);
+  EXPECT_EQ(first.size(), (my::map<int, std::string>::size_type)5);
   first.clear();
   EXPECT_TRUE(first.find(2) == first.end());
-  EXPECT_EQ(first.size(), (s21::map<int, std::string>::size_type)0);
+  EXPECT_EQ(first.size(), (my::map<int, std::string>::size_type)0);
 }
 TEST(Map, Insert_normal) {
-  s21::map<int, std::string> first{{2, "school"}, {5, "twenty"}, {21, "one"}};
+  my::map<int, std::string> first{{2, "school"}, {5, "twenty"}, {21, "one"}};
   EXPECT_EQ(first.begin()->first, 2);
   EXPECT_EQ(first.begin()->second, "school");
-  EXPECT_EQ(first.size(), (s21::map<int, std::string>::size_type)3);
+  EXPECT_EQ(first.size(), (my::map<int, std::string>::size_type)3);
   first.insert({0, "GO"});
   EXPECT_EQ(first.begin()->first, 0);
   EXPECT_EQ(first.begin()->second, "GO");
-  EXPECT_EQ(first.size(), (s21::map<int, std::string>::size_type)4);
+  EXPECT_EQ(first.size(), (my::map<int, std::string>::size_type)4);
 }
 TEST(Map, Insert_existed) {
-  s21::map<int, std::string> first{{2, "school"}, {5, "twenty"}, {21, "one"}};
+  my::map<int, std::string> first{{2, "school"}, {5, "twenty"}, {21, "one"}};
   EXPECT_EQ(first.begin()->first, 2);
   EXPECT_EQ(first.begin()->second, "school");
-  EXPECT_EQ(first.size(), (s21::map<int, std::string>::size_type)3);
+  EXPECT_EQ(first.size(), (my::map<int, std::string>::size_type)3);
   first.insert({21, "one"});
   EXPECT_EQ(first.begin()->first, 2);
   EXPECT_EQ(first.begin()->second, "school");
-  EXPECT_EQ(first.size(), (s21::map<int, std::string>::size_type)3);
+  EXPECT_EQ(first.size(), (my::map<int, std::string>::size_type)3);
 }
 TEST(Map, Insert_separately) {
-  s21::map<int, std::string> first{{2, "school"}, {5, "twenty"}, {21, "one"}};
+  my::map<int, std::string> first{{2, "school"}, {5, "twenty"}, {21, "one"}};
   EXPECT_EQ(first.begin()->first, 2);
   EXPECT_EQ(first.begin()->second, "school");
-  EXPECT_EQ(first.size(), (s21::map<int, std::string>::size_type)3);
+  EXPECT_EQ(first.size(), (my::map<int, std::string>::size_type)3);
   first.insert(0, "GO");
   EXPECT_EQ(first.begin()->first, 0);
   EXPECT_EQ(first.begin()->second, "GO");
-  EXPECT_EQ(first.size(), (s21::map<int, std::string>::size_type)4);
+  EXPECT_EQ(first.size(), (my::map<int, std::string>::size_type)4);
 }
 TEST(Map, Insert_or_assign) {
-  s21::map<int, std::string> first{{2, "school"}, {5, "twenty"}, {21, "one"}};
+  my::map<int, std::string> first{{2, "school"}, {5, "twenty"}, {21, "one"}};
   EXPECT_EQ(first.begin()->first, 2);
   EXPECT_EQ(first.begin()->second, "school");
-  EXPECT_EQ(first.size(), (s21::map<int, std::string>::size_type)3);
+  EXPECT_EQ(first.size(), (my::map<int, std::string>::size_type)3);
   first.insert_or_assign(2, "SCHOOL");
   EXPECT_EQ(first.begin()->first, 2);
   EXPECT_EQ(first.begin()->second, "SCHOOL");
-  EXPECT_EQ(first.size(), (s21::map<int, std::string>::size_type)3);
+  EXPECT_EQ(first.size(), (my::map<int, std::string>::size_type)3);
   first.insert_or_assign(0, "GO");
   EXPECT_EQ(first.begin()->first, 0);
   EXPECT_EQ(first.begin()->second, "GO");
-  EXPECT_EQ(first.size(), (s21::map<int, std::string>::size_type)4);
+  EXPECT_EQ(first.size(), (my::map<int, std::string>::size_type)4);
 }
 TEST(Map, Erase) {
-  s21::map<int, std::string> first{{2, "school"}, {5, "twenty"}, {21, "one"}};
+  my::map<int, std::string> first{{2, "school"}, {5, "twenty"}, {21, "one"}};
   EXPECT_EQ(first.begin()->first, 2);
   EXPECT_EQ(first.begin()->second, "school");
-  EXPECT_EQ(first.size(), (s21::map<int, std::string>::size_type)3);
+  EXPECT_EQ(first.size(), (my::map<int, std::string>::size_type)3);
   first.erase(first.begin());
   EXPECT_EQ(first.begin()->first, 5);
   EXPECT_EQ(first.begin()->second, "twenty");
-  EXPECT_EQ(first.size(), (s21::map<int, std::string>::size_type)2);
+  EXPECT_EQ(first.size(), (my::map<int, std::string>::size_type)2);
 }
 TEST(Map, Erase_end) {
-  s21::map<int, std::string> first{{2, "school"}, {5, "twenty"}, {21, "one"}};
+  my::map<int, std::string> first{{2, "school"}, {5, "twenty"}, {21, "one"}};
   EXPECT_EQ(first.begin()->first, 2);
   EXPECT_EQ(first.begin()->second, "school");
-  EXPECT_EQ(first.size(), (s21::map<int, std::string>::size_type)3);
+  EXPECT_EQ(first.size(), (my::map<int, std::string>::size_type)3);
   first.erase(first.end());
   EXPECT_EQ(first.begin()->first, 2);
   EXPECT_EQ(first.begin()->second, "school");
-  EXPECT_EQ(first.size(), (s21::map<int, std::string>::size_type)3);
+  EXPECT_EQ(first.size(), (my::map<int, std::string>::size_type)3);
 }
 TEST(Map, Swap) {
-  s21::map<int, std::string> first{{2, "school"},   {5, "twenty"}, {21, "one"},
+  my::map<int, std::string> first{{2, "school"},   {5, "twenty"}, {21, "one"},
                                    {14, "alpacas"}, {5, "let's"},  {0, "GO"}};
-  s21::map<int, std::string> second{
+  my::map<int, std::string> second{
       {5, "blade"}, {55, "runner"}, {83, "jerry"}, {44, "perenchio"}};
   std::map<int, std::string> result{{2, "school"},   {5, "twenty"}, {21, "one"},
                                     {14, "alpacas"}, {5, "let's"},  {0, "GO"}};
@@ -243,9 +243,9 @@ TEST(Map, Swap) {
   EXPECT_EQ(result.size(), second.size());
 }
 TEST(Map, Merge) {
-  s21::map<int, std::string> first{{2, "school"},   {5, "twenty"}, {21, "one"},
+  my::map<int, std::string> first{{2, "school"},   {5, "twenty"}, {21, "one"},
                                    {14, "alpacas"}, {5, "let's"},  {0, "GO"}};
-  s21::map<int, std::string> second{
+  my::map<int, std::string> second{
       {5, "blade"}, {55, "runner"}, {83, "jerry"}, {44, "perenchio"}};
   std::map<int, std::string> first_std{{2, "school"}, {5, "twenty"},
                                        {21, "one"},   {14, "alpacas"},
@@ -268,7 +268,7 @@ TEST(Map, Merge) {
   }
 }
 TEST(Map, Find) {
-  s21::map<int, std::string> first{{2, "school"},   {5, "twenty"}, {21, "one"},
+  my::map<int, std::string> first{{2, "school"},   {5, "twenty"}, {21, "one"},
                                    {14, "alpacas"}, {5, "let's"},  {0, "GO"}};
   auto it = first.begin();
   EXPECT_TRUE(it == first.find(0));
@@ -279,13 +279,13 @@ TEST(Map, Find) {
   EXPECT_TRUE(first.end() == first.find(101));
 }
 TEST(Map, Contains) {
-  s21::map<int, std::string> first{{2, "school"},   {5, "twenty"}, {21, "one"},
+  my::map<int, std::string> first{{2, "school"},   {5, "twenty"}, {21, "one"},
                                    {14, "alpacas"}, {5, "let's"},  {0, "GO"}};
   EXPECT_EQ(first.contains(21), true);
   EXPECT_EQ(first.contains(101), false);
 }
 TEST(Map, Insert_many) {
-  s21::map<int, std::string> first{{2, "school"}, {5, "twenty"}, {21, "one"}};
+  my::map<int, std::string> first{{2, "school"}, {5, "twenty"}, {21, "one"}};
   std::map<int, std::string> result{{2, "school"},   {5, "twenty"}, {21, "one"},
                                     {14, "alpacas"}, {5, "let's"},  {0, "GO"}};
   first.insert_many(std::pair{14, "alpacas"}, std::pair{5, "let's"},

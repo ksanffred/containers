@@ -1,7 +1,7 @@
 #include "tests_entry.h"
 #define DEFAULT_SIZE 5
 #define DEFAULT_LIST {1, 2, 3, 4, 5}
-using namespace s21;
+using namespace my;
 
 TEST(ListIterator, DefaultConstructor) {
   list<int>::ListIterator it;
