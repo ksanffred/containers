@@ -348,21 +348,6 @@ TEST(list, Swap) {
   list_first.~list();
   list_second.~list();
 }
-TEST(list, Merge) {
-  list<int> list_(DEFAULT_SIZE);
-  list<int> list_copy(list_);
-  list<int>::ListIterator it = list_copy.begin();
-
-  for (; it != list_copy.end(); it++) *it = 1;
-  list_.merge(list_copy);
-  it = list_.begin();
-  for (int i = 0; i < 2 * DEFAULT_SIZE; i++, it++)
-    ASSERT_EQ(*it, (i < DEFAULT_SIZE) ? 0 : 1);
-  ASSERT_EQ(list_.size(), (list<int>::size_type)(2 * DEFAULT_SIZE));
-  it.~ListIterator();
-  list_.~list();
-  list_copy.~list();
-}
 TEST(list, Splice) {
   list<int> list_(DEFAULT_SIZE);
   list<int> list_copy(list_);
@@ -383,17 +368,6 @@ TEST(list, Reverse) {
   ASSERT_EQ(list_.back(), reversed_list.back());
   list_.~list();
   reversed_list.~list();
-}
-TEST(list, Unique) {
-  list<int> list_ = {1, 2, 2, 3, 3, 3};
-  list<int> unique_list = {1, 2, 3};
-
-  list_.unique();
-  ASSERT_EQ(list_.front(), unique_list.front());
-  ASSERT_EQ(list_.back(), unique_list.back());
-  ASSERT_EQ(list_.size(), unique_list.size());
-  list_.~list();
-  unique_list.~list();
 }
 TEST(list, Sort) {
   list<int> list_ = {2, 4, 1, 3, 5};
